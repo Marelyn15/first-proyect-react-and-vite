@@ -1,0 +1,13 @@
+{!isLoading ? (
+        <ul>
+          {getData().map((service)=>{
+            return(
+              <li key={service.id}>
+                <Link to={`/$service.id`}>{service.name}</Link>
+              </li>
+            );
+          })}
+        </ul>
+      ):(
+        <h3>Cargando...</h3>
+      )}
