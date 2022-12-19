@@ -17,13 +17,14 @@ import "../styles/options.css";
 
 function App() {
   const { data, isLoading } = useFetch("http://localhost:3000/users");
-  const [searchTerm, setSearchTerm] = useState("")
+  const [searchTerm, setSearchTerm] = useState("");
 
   //To lower case para busquedas
-  const getNames = () =>{
-    return data
-    .filter((user) => user.name.toLowerCase().includes(searchTerm.toLowerCase()))
-  }
+  const getNames = () => {
+    return data.filter((user) =>
+      user.name.toLowerCase().includes(searchTerm.toLowerCase())
+    );
+  };
   return (
     <div>
       <div className="options">
@@ -47,11 +48,11 @@ function App() {
         </div>
       </div>
       {/*SearchBar */}
-      <SearchBar onSearch={(value) => setSearchTerm(value)}/>
+      <SearchBar onSearch={(value) => setSearchTerm(value)} />
       {/*Logica de cartas y nombres */}
       {!isLoading ? (
         <ul>
-          { getNames().map((user) => {
+          {getNames().map((user) => {
             return (
               <div className="card">
                 <p key={user.id}>

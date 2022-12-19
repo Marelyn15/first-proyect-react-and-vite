@@ -1,15 +1,14 @@
 import { useEffect, useState } from "react";
 
 //Funcion que hara un delay a la hora de busquedas
-export function useDebounce(value, delay){
+export function useDebounce(value, delay) {
+  const [debounceValue, setDebounceValue] = useState(value);
 
-    const [debounceValue, setDebounceValue] = useState(value);
-
-    useEffect(()=>{
-        const handler = setTimeout(()=>{
-            setDebounceValue(value);
-        }, delay);
-        return () => clearTimeout(handler);
-    }, [value, delay]);
-    return debounceValue;
+  useEffect(() => {
+    const handler = setTimeout(() => {
+      setDebounceValue(value);
+    }, delay);
+    return () => clearTimeout(handler);
+  }, [value, delay]);
+  return debounceValue;
 }
