@@ -3,12 +3,12 @@ import { useState, useEffect } from 'react'
 import { useFetch } from '../utils/hooks/useFetch'
 //Link
 import { Link } from 'react-router-dom';
+import { MdMoreTime } from "react-icons/md";
 
  
 
 function App() {
   const {data, isLoading} = useFetch("http://localhost:3000/users");
-
  
   return(
     <div>
@@ -18,7 +18,7 @@ function App() {
           {data.map((user)=>{
             return(
               <li key={user.id}>
-                <a href='#'>{user.name}</a>
+                <Link to={`/${user.id}`}>{user.name}</Link>
               </li>
             );
           })}
@@ -27,6 +27,7 @@ function App() {
         <h3>Cargando...</h3>
       )}
     </div>
+    
   )
 }
 
