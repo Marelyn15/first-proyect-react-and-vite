@@ -20,7 +20,7 @@ function Detalles() {
   );
 
   //Data de los posts de acuerdo a los users
-  const { dataPost } = useFetchPost(`http://localhost:3000/posts/${params.id}`);
+  const { dataPost} = useFetchPost(`http://localhost:3000/users/${params.id}/posts`);
 
   if (isLoading)
     return (
@@ -40,20 +40,31 @@ function Detalles() {
         <MdPeopleAlt /> {data.name}
       </h1>
       <p>Edad: {data.age}</p>
-
+        {/*Datos de los post*/}
       <h2>
         <MdOutlinePostAdd />
         Posts
       </h2>
-      <h3>
-        <em>{dataPost.title}</em>
-      </h3>
-      <p>{dataPost.content}</p>
-      <p>
-        <strong>Creado:</strong> {dataPost.created_at}
-      </p>
-    </div>
-  );
-}
+        <ul>
+            {dataPost.map((post)=>{
+                return(
+                  <div>
+                    <li key={post.id}>Post numero: {post.id},
+                    <br />
+                    Titulo: {post.title}
+                    <br />
+                    Contenido: {post.content}
+                    <br />
+                    Creado: {post.created_at}
+                    <br />
+                    </li>
+                    <br />
+                  </div>
+                )
+            })}
+        </ul>
+      </div>
+    )
+  }
 
 export default Detalles;
