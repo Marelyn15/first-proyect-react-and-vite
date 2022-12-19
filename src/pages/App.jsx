@@ -4,6 +4,9 @@ import { useFetch } from '../utils/hooks/useFetch'
 //Link
 import { Link } from 'react-router-dom';
 import { MdMoreTime } from "react-icons/md";
+import {MdPersonAdd} from "react-icons/md";
+//css
+import '../styles/cards.css';
 
  
 
@@ -17,14 +20,16 @@ function App() {
         <ul>
           {data.map((user)=>{
             return(
-              <li key={user.id}>
-                <Link to={`/${user.id}`}>{user.name}</Link>
-              </li>
+              <div className='card'>
+              <p key={user.id}>
+                <span className='title'><Link to={`/${user.id}`}><MdPersonAdd/>  {user.name}</Link></span>
+              </p>
+          </div>
             );
           })}
         </ul>
       ):(
-        <h3>Cargando...</h3>
+        <h3><MdMoreTime/>Cargando...</h3>
       )}
     </div>
     
