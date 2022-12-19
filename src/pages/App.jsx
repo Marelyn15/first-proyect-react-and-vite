@@ -1,10 +1,11 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect } from 'react';
 //getData
 import { useFetch } from '../utils/hooks/useFetch'
 //Link
 import { Link } from 'react-router-dom';
 import { MdMoreTime } from "react-icons/md";
 import {MdPersonAdd} from "react-icons/md";
+import {MdOutlinePersonSearch} from "react-icons/md"
 //css
 import '../styles/cards.css';
 
@@ -15,7 +16,7 @@ function App() {
  
   return(
     <div>
-      <h1>Users & posts</h1>
+      <h1><MdOutlinePersonSearch />Users</h1>
       {!isLoading ? (
         <ul>
           {data.map((user)=>{
