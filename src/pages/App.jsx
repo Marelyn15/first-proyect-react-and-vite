@@ -33,12 +33,6 @@ function App() {
           Users
         </h1>
         <div className="options-users">
-          <p className="editPerson">
-            <Link to={"EditUser"}>
-              {" "}
-              <BsFillPersonCheckFill /> Editar usuarios
-            </Link>
-          </p>
           <p className="addPerson">
             <Link to={"AddPerson"}>
               {" "}
@@ -61,6 +55,12 @@ function App() {
                       <MdPerson /> {user.name}
                     </Link>
                   </span>
+                  <p className="editPerson">
+                    <Link to={`${user.id}/EditUser`}>
+                      {" "}
+                      <BsFillPersonCheckFill /> Editar usuarios
+                    </Link>
+                  </p>
                 </p>
               </div>
             );

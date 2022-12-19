@@ -1,5 +1,8 @@
-import { MdOutlineReply } from "react-icons/md";
+//Hooks
 import { Link, useParams } from "react-router-dom";
+//Icons
+import { BsFillPersonCheckFill } from "react-icons/bs";
+import { MdOutlineReply } from "react-icons/md";
 
 function EditUser() {
   return (
@@ -8,7 +11,19 @@ function EditUser() {
         <MdOutlineReply />
         Atras
       </Link>
-      <h1>Hello world</h1>
+      <h1>
+        <BsFillPersonCheckFill /> Editar usuarios
+      </h1>
+      <label>
+        Titulo:
+        <input className="Add" placeholder="Title..." />
+      </label>
+      <label>
+        Contenido:
+        <input className="Add" placeholder="Content..." />
+      </label>
+
+      <button>Enviar</button>
     </div>
   );
 }
