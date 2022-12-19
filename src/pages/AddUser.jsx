@@ -14,6 +14,7 @@ import "../styles/cards.css";
 
 function AddUser() {
   const params = useParams();
+
   //Data de los user by id
   const { data, isLoading } = useFetch(
     `http://localhost:3000/users`
@@ -23,6 +24,23 @@ function AddUser() {
   const { dataPost } = useFetchPost(
     `http://localhost:3000/posts`
   );
+
+  //users
+  const user_name = useRef(null);
+  const user_id = useRef(null);
+  //post
+  const post_title = useRef(null);
+  const posst_description = useRef(null);
+  //state
+  const [postResult, setPostResult] = useState(null);
+
+  async function userData(){
+    const userData = {
+      nombre: user_name.current.value,
+      id: user_id.current.value,
+    };
+  }
+  
 
   return (
     <div>
