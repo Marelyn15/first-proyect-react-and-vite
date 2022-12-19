@@ -1,26 +1,25 @@
 @import url(https://fonts.googleapis.com/css?family=Varela+Round);
 
 /*Colors*/
-:root{
-    /*Primary*/
-    --Very-dark-gray: #1F2124;
-    --dark-gray: #383A3F;
-    --orage-red: #F68657;
-    --yellow-orange: #F6B352;
+:root {
+  /*Primary*/
+  --Very-dark-gray: #1f2124;
+  --dark-gray: #383a3f;
+  --orage-red: #f68657;
+  --yellow-orange: #f6b352;
 }
-body{
-    background: var(--dark-gray);
-    font-family: "Valera Round", sans-serif;
+body {
+  background: var(--dark-gray);
+  font-family: "Valera Round", sans-serif;
 }
-.card{
-    background: var(--Very-dark-gray);
-    box-shadow: 0 0 20px rgba(0,0,0,0.4);
-    border-radius: 5px;
-    margin: 50px 20px 20px 20px;
-    width: calc(33.3333% - 40px);
-    padding: 20px;
-    text-align: center;
-    color:white;
-    display: inline-block;
-
+.card {
+  background: var(--Very-dark-gray);
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
+  border-radius: 5px;
+  margin: 50px 20px 20px 20px;
+  width: calc(33.3333% - 40px);
+  padding: 20px;
+  text-align: center;
+  color: white;
+  display: inline-block;
 }

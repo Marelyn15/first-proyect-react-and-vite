@@ -1,40 +1,47 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect } from "react";
 //getData
-import { useFetch } from '../utils/hooks/useFetch'
+import { useFetch } from "../utils/hooks/useFetch";
 //Link
-import { Link } from 'react-router-dom';
+import { Link } from "react-router-dom";
 import { MdMoreTime } from "react-icons/md";
-import {MdPersonAdd} from "react-icons/md";
-import {MdOutlinePersonSearch} from "react-icons/md"
+import { MdPersonAdd } from "react-icons/md";
+import { MdOutlinePersonSearch } from "react-icons/md";
 //css
-import '../styles/cards.css';
-
- 
+import "../styles/cards.css";
 
 function App() {
-  const {data, isLoading} = useFetch("http://localhost:3000/users");
- 
-  return(
+  const { data, isLoading } = useFetch("http://localhost:3000/users");
+
+  return (
     <div>
-      <h1><MdOutlinePersonSearch />Users</h1>
+      <h1>
+        <MdOutlinePersonSearch />
+        Users
+      </h1>
       {!isLoading ? (
         <ul>
-          {data.map((user)=>{
-            return(
-              <div className='card'>
-              <p key={user.id}>
-                <span className='title'><Link to={`/${user.id}`}><MdPersonAdd/>  {user.name}</Link></span>
-              </p>
-          </div>
+          {data.map((user) => {
+            return (
+              <div className="card">
+                <p key={user.id}>
+                  <span className="title">
+                    <Link to={`/${user.id}`}>
+                      <MdPersonAdd /> {user.name}
+                    </Link>
+                  </span>
+                </p>
+              </div>
             );
           })}
         </ul>
-      ):(
-        <h3><MdMoreTime/>Cargando...</h3>
+      ) : (
+        <h3>
+          <MdMoreTime />
+          Cargando...
+        </h3>
       )}
     </div>
-    
-  )
+  );
 }
 
-export default App
+export default App;
