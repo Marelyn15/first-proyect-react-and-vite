@@ -8,7 +8,6 @@ import { MdMoreTime } from "react-icons/md";
 import { MdOutlineReply } from "react-icons/md";
 import { MdPeopleAlt } from "react-icons/md";
 import { MdOutlinePostAdd } from "react-icons/md";
-import { MdOutlineKeyboardTab } from "react-icons/md";
 //css
 import "../styles/cards.css";
 
@@ -20,7 +19,9 @@ function Detalles() {
   );
 
   //Data de los posts de acuerdo a los users
-  const { dataPost} = useFetchPost(`http://localhost:3000/users/${params.id}/posts`);
+  const { dataPost } = useFetchPost(
+    `http://localhost:3000/users/${params.id}/posts`
+  );
 
   if (isLoading)
     return (
@@ -40,31 +41,32 @@ function Detalles() {
         <MdPeopleAlt /> {data.name}
       </h1>
       <p>Edad: {data.age}</p>
-        {/*Datos de los post*/}
+      {/*Datos de los post*/}
       <h2>
         <MdOutlinePostAdd />
         Posts
       </h2>
-        <ul>
-            {dataPost.map((post)=>{
-                return(
-                  <div>
-                    <li key={post.id}>Post numero: {post.id},
-                    <br />
-                    Titulo: {post.title}
-                    <br />
-                    Contenido: {post.content}
-                    <br />
-                    Creado: {post.created_at}
-                    <br />
-                    </li>
-                    <br />
-                  </div>
-                )
-            })}
-        </ul>
-      </div>
-    )
-  }
+      <ul>
+        {dataPost.map((post) => {
+          return (
+            <div>
+              <li key={post.id}>
+                Post numero: {post.id},
+                <br />
+                Titulo: {post.title}
+                <br />
+                Contenido: {post.content}
+                <br />
+                Creado: {post.created_at}
+                <br />
+              </li>
+              <br />
+            </div>
+          );
+        })}
+      </ul>
+    </div>
+  );
+}
 
 export default Detalles;

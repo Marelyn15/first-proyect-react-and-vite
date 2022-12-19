@@ -6,18 +6,37 @@ import { Link } from "react-router-dom";
 import { MdMoreTime } from "react-icons/md";
 import { MdPersonAdd } from "react-icons/md";
 import { MdOutlinePersonSearch } from "react-icons/md";
+import { MdPerson } from "react-icons/md";
+import { BsFillPersonCheckFill } from "react-icons/bs";
 //css
 import "../styles/cards.css";
+import "../styles/options.css";
 
 function App() {
   const { data, isLoading } = useFetch("http://localhost:3000/users");
 
   return (
     <div>
-      <h1>
-        <MdOutlinePersonSearch />
-        Users
-      </h1>
+      <div className="options">
+        <h1>
+          <MdOutlinePersonSearch />
+          Users
+        </h1>
+        <div className="options-users">
+          <p className="editPerson">
+            <Link to={"EditUser"}>
+              {" "}
+              <BsFillPersonCheckFill /> Editar usuarios
+            </Link>
+          </p>
+          <p className="addPerson">
+            <Link to={"AddPerson"}>
+              {" "}
+              <MdPersonAdd /> Agregar usuarios
+            </Link>
+          </p>
+        </div>
+      </div>
       {!isLoading ? (
         <ul>
           {data.map((user) => {
@@ -26,7 +45,7 @@ function App() {
                 <p key={user.id}>
                   <span className="title">
                     <Link to={`/${user.id}`}>
-                      <MdPersonAdd /> {user.name}
+                      <MdPerson /> {user.name}
                     </Link>
                   </span>
                 </p>
