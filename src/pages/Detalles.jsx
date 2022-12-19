@@ -7,6 +7,10 @@ import { useFetchPost } from "../utils/hooks/useFetchPost";
 import { MdMoreTime } from "react-icons/md";
 import {MdOutlineReply} from "react-icons/md";
 import {MdPeopleAlt} from "react-icons/md";
+import {MdOutlinePostAdd} from "react-icons/md";
+import {MdOutlineKeyboardTab} from "react-icons/md";
+//css
+import '../styles/cards.css';
 
 function Detalles(){
     const params = useParams();
@@ -26,7 +30,7 @@ function Detalles(){
         <h1><MdPeopleAlt/> {data.name}</h1>
         <p>Edad: {data.age}</p>
         
-        <h2>Posts</h2>
+        <h2><MdOutlinePostAdd/>Posts</h2>
         <h3><em>{dataPost.title}</em></h3>
         <p>{dataPost.content}</p>
         <p><strong>Creado:</strong> {dataPost.created_at}</p>
