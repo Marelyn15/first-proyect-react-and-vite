@@ -6,7 +6,6 @@ import { Link, useParams } from "react-router-dom";
 import {useRef, useState} from "react"
 //fetch
 import { useFetch } from "../utils/hooks/useFetch";
-import { useFetchPost } from "../utils/hooks/useFetchPost";
 //CSS
 import "../styles/AddUser.css";
 import "../styles/cards.css";
@@ -15,33 +14,30 @@ import "../styles/cards.css";
 function AddUser() {
   const params = useParams();
 
-  //Data de los user by id
-  const { data, isLoading } = useFetch(
-    `http://localhost:3000/users`
-  );
-
-  //Data de los posts de acuerdo a los users
-  const { dataPost } = useFetchPost(
-    `http://localhost:3000/posts`
-  );
-
-  //users
-  const user_name = useRef(null);
-  const user_id = useRef(null);
-  //post
-  const post_title = useRef(null);
-  const posst_description = useRef(null);
-  //state
-  const [postResult, setPostResult] = useState(null);
-
-  async function userData(){
+  //Constantes
+  const userName = useRef(null);
+  const userAge = useRef(null);
+  const userAddress = useRef(null);
+  //UseState
+  const [userResult, setuserResult] = useState(null);
+  //envio de datos
+  function userData(){
     const userData = {
-      nombre: user_name.current.value,
-      id: user_id.current.value,
-    };
+      name: userName.current.value,
+      age: userAge.current.value,
+      address:  userAddress.current.value
+    }
+    console.log(userData);
+  }
+  //User`s data
+  const { data, isLoading } = useFetch(
+    `http://localhost:3000/users`, "POST",  JSON.stringify(userData) );
+  
+    //Limpiar datos
+  const limpiarSalida = () => {
+    setuserResult(null);
   }
   
-
   return (
     <div>
       <Link to={".."}>
@@ -54,22 +50,19 @@ function AddUser() {
       </h1>
       <label>
         Nombre:
-        <input className="Add" placeholder="Nombre..." />
+        <input type="text" className="Add" ref={userName} placeholder="Nombre..." />
       </label>
       <label>
-        Id:
-        <input className="Add" placeholder="Id..." />
+        Edad:
+        <input type="text" className="Add" ref={userAge} placeholder="Edad..." />
       </label>
       <label>
-        Titulo:
-        <input className="Add" placeholder="Title..." />
+        Direccion:
+        <input type="text" className="Add" ref={userAddress} placeholder="Direccion..." />
       </label>
-      <label>
-        Contenido:
-        <input className="Add" placeholder="Content..." />
-      </label>
+      <button className="buton" onClick={userData}>Enviar</button>
+      <button className="buton" onClick={limpiarSalida}>Limpiar</button>
 
-      <button>Enviar</button>
     </div>
   );
 }
