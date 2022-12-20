@@ -14,7 +14,16 @@ import "../styles/cards.css";
 function AddUser() {
   const params = useParams();
 
+  //User`s data Fetch
+  const { data, isLoading } = useFetch(
+    `http://localhost:3000/users`, "POST",  JSON.stringify(userData) );
+
+  //ultimo elemnto de los id
+ 
+ 
   //Constantes
+  const userId = 50;
+ // console.log(userId)
   const userName = useRef(null);
   const userAge = useRef(null);
   const userAddress = useRef(null);
@@ -23,15 +32,16 @@ function AddUser() {
   //envio de datos
   function userData(){
     const userData = {
+      id: parseInt(userId)+1,
       name: userName.current.value,
       age: userAge.current.value,
       address:  userAddress.current.value
     }
     console.log(userData);
+    alert("se guardaron los datos");
+    data.push(userData);
+    console.log(data)
   }
-  //User`s data
-  const { data, isLoading } = useFetch(
-    `http://localhost:3000/users`, "POST",  JSON.stringify(userData) );
   
     //Limpiar datos
   const limpiarSalida = () => {
@@ -54,7 +64,7 @@ function AddUser() {
       </label>
       <label>
         Edad:
-        <input type="text" className="Add" ref={userAge} placeholder="Edad..." />
+        <input type="number" className="Add" ref={userAge} placeholder="Edad..." />
       </label>
       <label>
         Direccion:
