@@ -2,7 +2,7 @@
 import { useEffect, useState } from "react";
 import { useDebounce } from "../utils/hooks/useDebounce";
 //Icons
-import {MdOutlineSearch} from "react-icons/md";
+import { MdOutlineSearch } from "react-icons/md";
 /**
  *
  * @param {{ onSearch: void }} props
@@ -20,8 +20,8 @@ export function SearchBar({ onSearch = () => {} }) {
   return (
     <div>
       <label>
-        <MdOutlineSearch/>
-         Search:
+        <MdOutlineSearch />
+        Search:
         <input
           style={{ width: "100%" }}
           placeholder="Busca por nombre..."

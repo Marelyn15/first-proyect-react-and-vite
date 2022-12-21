@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react";
 //Hooks
-import { useFetch } from "../utils/hooks/useFetch";
+import { useFetch } from "../../utils/hooks/useFetch";
 //Components
-import { SearchBar } from "../components/SearchBar";
+import { SearchBar } from "../../components/SearchBar";
 //Link
 import { Link } from "react-router-dom";
 //Icons
@@ -12,10 +12,10 @@ import { MdOutlinePersonSearch } from "react-icons/md";
 import { MdPerson } from "react-icons/md";
 import { BsFillPersonCheckFill } from "react-icons/bs";
 //css
-import "../styles/cards.css";
-import "../styles/options.css";
+import "../../styles/cards.css";
+import "../../styles/options.css";
 
-function App() {
+export function User() {
   const { data, isLoading } = useFetch("http://localhost:3000/users");
   const [searchTerm, setSearchTerm] = useState("");
 
@@ -76,4 +76,4 @@ function App() {
   );
 }
 
-export default App;
+export default User;
