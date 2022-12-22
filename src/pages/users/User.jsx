@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 //Hooks
 import { useFetch } from "../../utils/hooks/useFetch";
 //Components
@@ -11,6 +11,7 @@ import { MdPersonAdd } from "react-icons/md";
 import { MdOutlinePersonSearch } from "react-icons/md";
 import { MdPerson } from "react-icons/md";
 import { BsFillPersonCheckFill } from "react-icons/bs";
+import { MdOutlineAutoDelete } from "react-icons/md";
 //css
 import "../../styles/cards.css";
 import "../../styles/options.css";
@@ -49,16 +50,25 @@ export function User() {
           {getNames().map((user) => {
             return (
               <div className="card">
+                {/**Lista de usuarios */}
                 <p key={user.id}>
                   <span className="title">
                     <Link to={`${user.id}`}>
                       <MdPerson /> {user.name}
                     </Link>
                   </span>
+                  {/**Editar usuario */}
                   <p className="editPerson">
                     <Link to={`${user.id}/EditUser`}>
                       {" "}
                       <BsFillPersonCheckFill /> Editar usuarios
+                    </Link>
+                  </p>
+                  {/**Borrar usuario */}
+                  <p className="editPerson">
+                    <Link to={`${user.id}/DeleteUser`}>
+                      <MdOutlineAutoDelete />
+                      Borrar Usuario
                     </Link>
                   </p>
                 </p>

@@ -21,9 +21,10 @@ import App from "./pages/Home";
 import Post from "./pages/posts/Post";
 import { DetallesPosts } from "./pages/posts/DetallesPosts";
 import AddUser from "./pages/users/AddUser";
-import EditUser from "./pages/users/EditUser"
+import EditUser from "./pages/users/EditUser";
 import User from "./pages/users/User";
 import { DetallesUsuarios } from "./pages/users/DetallesUsuarios";
+import { DeleteUser } from "./pages/users/DeleteUser";
 
 const router = createBrowserRouter([
   {
@@ -67,6 +68,10 @@ const router = createBrowserRouter([
       {
         path: "/users/:id/EditUser",
         element: <EditUser />,
+      },
+      {
+        path: "/users/:id/DeleteUser",
+        element: <DeleteUser />,
       },
     ],
   },
