@@ -8,39 +8,27 @@ import { Button } from "../../components/Button";
 import DetallesUsuarios from "./DetallesUsuarios";
 //Icons
 import { MdOutlineAutoDelete } from "react-icons/md";
+import { useEffect } from "react";
 
-export function DeleteUser() {
-  //Obtener el id:
-  const params = useParams();
-
-  const { mutate } = useSWRConfig();
-  const navigate = useNavigate();
-
+export function DeleteUser(props) {
+  
   //uso de fetch
-  const deleteUser = async (data) => {
-    await fetch(`http://localhost:3000/users/${params.id}`, {
+  const deleteUser = async () => {
+    await fetch(`http://localhost:3000/users/${props.id}`, {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",
         "x-access-token": "token-value",
       },
-      body: JSON.stringify(data),
     }).then(() => {
-      mutate(`http://localhost:3000/users/${params.id}`);
       alert("User deleted ❌");
-      navigate(-1);
     });
   };
+
+ 
   return (
     <div>
-      <h1>
-        <MdOutlineAutoDelete />
-        Borrar Registro
-      </h1>
-      <h2>Detalles de usuario:</h2>
-      <DetallesUsuarios />
-      <h2>¿Estás seguro de borrar este registro?</h2>
-      <Button onSubmit={(data) => deleteUser(data)} />
+      <button onClick={()=>deleteUser(props.id)}>Borrar</button>
     </div>
   );
 }

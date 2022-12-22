@@ -14,8 +14,6 @@ import { useParams } from "react-router-dom";
 function EditUser() {
   //Obtener el id:
   const params = useParams();
-
-  const { mutate } = useSWRConfig();
   const navigate = useNavigate();
 
   //uso de fetch
@@ -28,7 +26,6 @@ function EditUser() {
       },
       body: JSON.stringify(data),
     }).then(() => {
-      mutate(`http://localhost:3000/users/${params.id}`);
       alert("User modified ✔️");
       navigate(-1);
     });

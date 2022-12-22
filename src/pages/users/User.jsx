@@ -15,6 +15,8 @@ import { MdOutlineAutoDelete } from "react-icons/md";
 //css
 import "../../styles/cards.css";
 import "../../styles/options.css";
+//
+import {DeleteUser} from "./DeleteUser";
 
 export function User() {
   const { data, isLoading } = useFetch("http://localhost:3000/users");
@@ -65,12 +67,7 @@ export function User() {
                     </Link>
                   </p>
                   {/**Borrar usuario */}
-                  <p className="editPerson">
-                    <Link to={`${user.id}/DeleteUser`}>
-                      <MdOutlineAutoDelete />
-                      Borrar Usuario
-                    </Link>
-                  </p>
+                  <DeleteUser id={user.id} />
                 </p>
               </div>
             );

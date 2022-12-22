@@ -13,7 +13,7 @@ export function Button({ onSubmit }) {
   return (
     <div>
       <form ref={formRef} onSubmit={handleSubmit}>
-        <button style={{ width: "100%" }} type={"submit"}>
+        <button style={{ width: "100%" }} type={"submit"} >
           Borrar
         </button>
       </form>
