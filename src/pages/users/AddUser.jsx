@@ -1,92 +1,36 @@
 //Icons
-import { MdOutlineReply } from "react-icons/md";
 import { MdPersonAdd } from "react-icons/md";
 //Hooks
-import { Link, useParams } from "react-router-dom";
-import { useRef, useState } from "react";
-//fetch
-import { useFetch } from "../../utils/hooks/useFetch";
+import { useSWRConfig } from "swr";
+//Formulario
+import {UserForm} from "../../components/Form/UserForm"
+import { mutate } from "swr";
+import { useNavigate } from "react-router-dom";
 
 function AddUser() {
-  //User`s data Fetch
-  const { data } = useFetch(
-    `http://localhost:3000/users`,
-    "POST",
-    JSON.stringify(userData)
-  );
 
-  //ultimo elemnto de los id
+  const navigate = useNavigate();
 
-  //Constantes iteradas
-  const userId = 50;
-  // Constantes nuevas
-  const userName = useRef(null);
-  const userAge = useRef(null);
-  const userAddress = useRef(null);
-  //UseState
-  const [userResult, setuserResult] = useState(null);
-  //envio de datos
-  function userData() {
-    const userData = {
-      id: parseInt(userId) + 1,
-      name: userName.current.value,
-      age: userAge.current.value,
-      address: userAddress.current.value,
-    };
-    console.log(userData);
-    alert("se guardaron los datos");
-    data.push(userData);
-    console.log(data);
+  //uso de fetch
+  const postUser = async(data) => {
+    await fetch("http://localhost:3000/users", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    }).then(()=>{
+      mutate("http://localhost:3000/users");
+      alert("User Created ✔️");
+      navigate(-1);
+    })
+   
   }
-
-  //Limpiar datos
-  const limpiarSalida = () => {
-    setuserResult(null);
-  };
 
   return (
     <div>
-      <Link to={".."}>
-        <MdOutlineReply />
-        Atras
-      </Link>
-
-      <h1>
-        <MdPersonAdd /> Crear nuevos usuarios
-      </h1>
-      <label>
-        Nombre:
-        <input
-          type="text"
-          className="Add"
-          ref={userName}
-          placeholder="Nombre..."
-        />
-      </label>
-      <label>
-        Edad:
-        <input
-          type="number"
-          className="Add"
-          ref={userAge}
-          placeholder="Edad..."
-        />
-      </label>
-      <label>
-        Direccion:
-        <textarea
-          type="text"
-          className="Add"
-          ref={userAddress}
-          placeholder="Direccion..."
-        />
-      </label>
-      <button className="buton" onClick={userData}>
-        Enviar
-      </button>
-      <button className="buton" onClick={limpiarSalida}>
-        Limpiar
-      </button>
+      <h1><MdPersonAdd />Agregar usuarios</h1>
+      <UserForm onSubmit={(data) => postUser(data)}/>
     </div>
   );
 }

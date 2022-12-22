@@ -27,7 +27,7 @@ export function DetallesPosts() {
             <MdOutlinePostAdd /> {dataPost.title}
           </h1>
           <p>
-            Created by: ,<Link to={`/${dataUser.id}`}>{dataUser.name}</Link>
+            Created by: ,<Link to={`users/${dataUser.id}`}>{dataUser.name}</Link>
           </p>
           <p>Content: {dataPost.content}</p>
           <p>Created at: {dataPost.created_at}</p>

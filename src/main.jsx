@@ -20,6 +20,8 @@ import { MdOutlineCancel } from "react-icons/md";
 import App from "./pages/Home";
 import Post from "./pages/posts/Post";
 import { DetallesPosts } from "./pages/posts/DetallesPosts";
+import AddUser from "./pages/users/AddUser";
+import EditUser from "./pages/users/EditUser"
 import User from "./pages/users/User";
 import { DetallesUsuarios } from "./pages/users/DetallesUsuarios";
 
@@ -39,16 +41,32 @@ const router = createBrowserRouter([
         element: <Post />,
       },
       {
-        path: "posts/posts/:id",
+        path: "posts/:id",
         element: <DetallesPosts />,
+      },
+      {
+        path: "/posts/:id/users/:id",
+        element: <DetallesUsuarios />,
       },
       {
         path: "/users",
         element: <User />,
       },
       {
-        path: "/:id",
+        path: "users/:id",
         element: <DetallesUsuarios />,
+      },
+      {
+        path: "users/:id/posts/:id",
+        element: <DetallesPosts />,
+      },
+      {
+        path: "/users/AddPerson",
+        element: <AddUser />,
+      },
+      {
+        path: "/users/:id/EditUser",
+        element: <EditUser />,
       },
     ],
   },

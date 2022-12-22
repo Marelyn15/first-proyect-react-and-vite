@@ -51,7 +51,7 @@ export function User() {
               <div className="card">
                 <p key={user.id}>
                   <span className="title">
-                    <Link to={`/${user.id}`}>
+                    <Link to={`${user.id}`}>
                       <MdPerson /> {user.name}
                     </Link>
                   </span>

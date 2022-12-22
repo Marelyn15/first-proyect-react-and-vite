@@ -45,7 +45,7 @@ export function DetallesUsuarios() {
           return (
             <div>
               <li key={post.id}>
-                Titulo: {post.title} 
+                Titulo: <Link to={`posts/${post.id}`}> {post.title} </Link>
               </li>
               <br />
             </div>

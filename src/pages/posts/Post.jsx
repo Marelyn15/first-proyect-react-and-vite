@@ -46,7 +46,7 @@ function Post() {
               <div className="card">
                 <p key={post.id}>
                   <span className="title">
-                    <Link to={`posts/${post.id}`}>
+                    <Link to={`${post.id}`}>
                       <RiNewspaperLine /> {post.title}
                     </Link>
                   </span>
