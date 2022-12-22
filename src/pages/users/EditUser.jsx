@@ -4,17 +4,25 @@ import { MdPersonAdd } from "react-icons/md";
 import { useSWRConfig } from "swr";
 //Formulario
 import {UserForm} from "../../components/Form/UserForm"
-import { mutate } from "swr";
 import { useNavigate } from "react-router-dom";
 //Detalles usuarios
 import {DetallesUsuarios} from "./DetallesUsuarios"
+//Peticiones
+import { useParams } from "react-router-dom";
 
 function EditUser() {
+
+  //Obtener el id: 
+  const params = useParams();
+
+  const {mutate} = useSWRConfig();
   const navigate = useNavigate();
+  
+
   
   //uso de fetch
   const changeUser = async(data) => {
-    await fetch("http://localhost:3000/users/${data.id}", {
+    await fetch(`http://localhost:3000/users/${params.id}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
@@ -22,11 +30,10 @@ function EditUser() {
       },
       body: JSON.stringify(data),
     }).then(()=>{
-      mutate("http://localhost:3000/users/${data.id}");
+      mutate(`http://localhost:3000/users/${params.id}`);
       alert("User modified ✔️");
-      console.log(changeUser);
       navigate(-1);
-    })
+    });
   }
   return (
     <div>
